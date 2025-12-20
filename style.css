@@ -1,0 +1,71 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+  text-align: center;
+}
+
+header {
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+h1 {
+  margin: 0;
+}
+
+select {
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+#map-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px auto;
+}
+
+#school-map {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 🔴 REAL MAP PIN */
+.pin {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: #e53935;
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -100%) rotate(-45deg);
+  pointer-events: none;
+}
+
+.pin-label {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+
+  background: white;
+  color: #111;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+footer {
+  margin: 20px;
+  font-size: 14px;
+  color: #555;
+}
