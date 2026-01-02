@@ -6,29 +6,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="container">
+    <div id="sidebar">
+      <h2>Teacher Locator</h2>
+      <input type="text" id="search" placeholder="Search teacher..." />
+      <select id="teacherSelect">
+        <option value="">Select a teacher</option>
+        <!-- Options inserted by JS -->
+      </select>
+    </div>
 
-<div id="container">
-  <div id="sidebar">
-    <h2>Teacher Locator</h2>
-
-    <input
-      type="text"
-      id="search"
-      placeholder="Search teacher..."
-    />
-
-    <select id="teacherSelect">
-      <option value="">Select a teacher</option>
-      <!-- OPTIONS INSERTED BY JS -->
-    </select>
+    <div id="map-container">
+      <div id="map-wrapper">
+        <img id="map" src="school-map.png" />
+        <div id="markers"></div>
+      </div>
+    </div>
   </div>
 
-  <div id="map-container">
-    <img id="map" src="./school-map.png" />
-    <div id="markers"></div>
-  </div>
-</div>
-
-<script type="module" src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
