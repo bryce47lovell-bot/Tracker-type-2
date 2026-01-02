@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, setDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Your new Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAP9j0jdIFUtCQnmJbuCe_TJ1iGB2RXky0",
   authDomain: "teacher-tracker-558a0.firebaseapp.com",
