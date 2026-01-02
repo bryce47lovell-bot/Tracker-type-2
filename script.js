@@ -1,18 +1,23 @@
+// Import Firestore modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, setDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// Your new Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyCPTVnWiPSF4fSGnjIjzMGs5g9WFIVBkc4",
-  authDomain: "teacher-tracker-295f6.firebaseapp.com",
-  projectId: "teacher-tracker-295f6",
-  storageBucket: "teacher-tracker-295f6.firebasestorage.app",
-  messagingSenderId: "357373042792",
-  appId: "1:357373042792:web:2f9e6752de9b649cebdbdd"
+  apiKey: "AIzaSyAP9j0jdIFUtCQnmJbuCe_TJ1iGB2RXky0",
+  authDomain: "teacher-tracker-558a0.firebaseapp.com",
+  projectId: "teacher-tracker-558a0",
+  storageBucket: "teacher-tracker-558a0.firebasestorage.app",
+  messagingSenderId: "151412400490",
+  appId: "1:151412400490:web:b1820167083f01001a4513",
+  measurementId: "G-EPMST60YQN"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Teacher list
 const teachers = [
   "Beau Austin","Heather Bretschneider","Courtney Crawford","Coach Griffin",
   "Allyson Jones","Kristi Logan","Ethan Merrow","Ralph Neeley","Kelly Bagwell",
@@ -72,12 +77,13 @@ map.addEventListener("click", async (e) => {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
+  // Save location in Firestore
   await setDoc(doc(db, "locations", activeTeacher), { x, y });
 });
 
 // Live updates across devices
 onSnapshot(collection(db, "locations"), snapshot => {
-  markersDiv.innerHTML = "";
+  markersDiv.innerHTML = ""; // clear existing markers
   snapshot.forEach(docSnap => {
     const { x, y } = docSnap.data();
     const marker = document.createElement("div");
