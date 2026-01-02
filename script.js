@@ -1,4 +1,3 @@
-// Import Firestore modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, setDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -17,7 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Teacher list
 const teachers = [
   "Beau Austin","Heather Bretschneider","Courtney Crawford","Coach Griffin",
   "Allyson Jones","Kristi Logan","Ethan Merrow","Ralph Neeley","Kelly Bagwell",
@@ -69,26 +67,28 @@ select.addEventListener("change", () => {
   activeTeacher = select.value;
 });
 
-// Click map → save location as percentage
+// Click map → save position relative to natural image size
 map.addEventListener("click", async (e) => {
   if (!activeTeacher) return;
 
   const rect = map.getBoundingClientRect();
-  const xPercent = (e.clientX - rect.left) / rect.width;
-  const yPercent = (e.clientY - rect.top) / rect.height;
+  const x = ((e.clientX - rect.left) / rect.width) * map.naturalWidth;
+  const y = ((e.clientY - rect.top) / rect.height) * map.naturalHeight;
 
-  await setDoc(doc(db, "locations", activeTeacher), { x: xPercent, y: yPercent });
+  await setDoc(doc(db, "locations", activeTeacher), { x, y });
 });
 
-// Live updates across devices
+// Show markers scaled to current displayed size
 onSnapshot(collection(db, "locations"), snapshot => {
   markersDiv.innerHTML = "";
+  const rect = map.getBoundingClientRect();
+
   snapshot.forEach(docSnap => {
     const { x, y } = docSnap.data();
     const marker = document.createElement("div");
     marker.className = "marker";
-    marker.style.left = (x * 100) + "%";
-    marker.style.top = (y * 100) + "%";
+    marker.style.left = (x / map.naturalWidth * rect.width) + "px";
+    marker.style.top = (y / map.naturalHeight * rect.height) + "px";
     markersDiv.appendChild(marker);
   });
 });
