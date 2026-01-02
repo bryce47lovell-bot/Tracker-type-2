@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, setDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔥 YOUR REAL FIREBASE CONFIG (ALREADY INSTALLED)
 const firebaseConfig = {
   apiKey: "AIzaSyCPTVnWiPSF4fSGnjIjzMGs5g9WFIVBkc4",
   authDomain: "teacher-tracker-295f6.firebaseapp.com",
@@ -14,7 +13,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// TEACHER LIST
 const teachers = [
   "Beau Austin","Heather Bretschneider","Courtney Crawford","Coach Griffin",
   "Allyson Jones","Kristi Logan","Ethan Merrow","Ralph Neeley","Kelly Bagwell",
@@ -55,7 +53,7 @@ function populate(list) {
 
 populate(teachers);
 
-// Search teachers
+// Search filter
 search.addEventListener("input", () => {
   const value = search.value.toLowerCase();
   const filtered = teachers.filter(t => t.toLowerCase().includes(value));
