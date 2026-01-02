@@ -69,27 +69,26 @@ select.addEventListener("change", () => {
   activeTeacher = select.value;
 });
 
-// Click map → save location
+// Click map → save location as percentage
 map.addEventListener("click", async (e) => {
   if (!activeTeacher) return;
 
   const rect = map.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  const xPercent = (e.clientX - rect.left) / rect.width;
+  const yPercent = (e.clientY - rect.top) / rect.height;
 
-  // Save location in Firestore
-  await setDoc(doc(db, "locations", activeTeacher), { x, y });
+  await setDoc(doc(db, "locations", activeTeacher), { x: xPercent, y: yPercent });
 });
 
 // Live updates across devices
 onSnapshot(collection(db, "locations"), snapshot => {
-  markersDiv.innerHTML = ""; // clear existing markers
+  markersDiv.innerHTML = "";
   snapshot.forEach(docSnap => {
     const { x, y } = docSnap.data();
     const marker = document.createElement("div");
     marker.className = "marker";
-    marker.style.left = x + "px";
-    marker.style.top = y + "px";
+    marker.style.left = (x * 100) + "%";
+    marker.style.top = (y * 100) + "%";
     markersDiv.appendChild(marker);
   });
 });
