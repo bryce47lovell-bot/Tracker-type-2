@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  height: 100vh; /* ensure container takes full height */
+  height: 100vh;
 }
 
 #container {
@@ -30,7 +30,7 @@ body {
 
 #map {
   width: 100%;
-  height: auto; /* natural height so it shows */
+  height: auto;
   display: block;
 }
 
@@ -39,8 +39,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* full overlay on the map */
-  pointer-events: none; /* clicks pass through to map */
+  height: 100%;
+  pointer-events: none;
 }
 
 .marker {
