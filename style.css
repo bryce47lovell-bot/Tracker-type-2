@@ -1,17 +1,19 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  height: 100vh;
 }
 
 #container {
   display: flex;
-  height: 100vh;
+  height: 100vh; /* full viewport height */
 }
 
 #sidebar {
   width: 300px;
   padding: 12px;
   border-right: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 #search,
@@ -19,18 +21,21 @@ body {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 #map-container {
   position: relative;
   flex: 1;
-  overflow: auto;
+  height: 100%;       /* full height of container */
+  overflow: hidden;   /* prevent scroll inside map */
 }
 
 #map {
-  display: block;   /* ensures top-left alignment */
-  max-width: 100%;
-  height: auto;
+  display: block;
+  width: 100%;        /* fill container width */
+  height: 100%;       /* fill container height */
+  object-fit: contain; /* keep aspect ratio */
 }
 
 #markers {
