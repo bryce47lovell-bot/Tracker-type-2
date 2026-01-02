@@ -27,15 +27,18 @@ body {
 #map-container {
   position: relative;
   flex: 1;
-  height: 100%;       /* full height of container */
-  overflow: hidden;   /* prevent scroll inside map */
+  height: 100%;
+  overflow: hidden;
 }
 
 #map {
   display: block;
-  width: 100%;        /* fill container width */
-  height: 100%;       /* fill container height */
-  object-fit: contain; /* keep aspect ratio */
+  width: auto;          /* width adjusts automatically */
+  height: 100%;         /* fill container height */
+  object-fit: none;     /* disable vertical centering */
+  position: absolute;   /* allow top-right positioning */
+  top: 0;
+  right: 0;             /* stick to top-right */
 }
 
 #markers {
