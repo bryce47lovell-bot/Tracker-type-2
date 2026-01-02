@@ -24,16 +24,13 @@ body {
 #map-container {
   position: relative;
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: auto;
 }
 
 #map {
+  display: block;   /* ensures top-left alignment */
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 #markers {
